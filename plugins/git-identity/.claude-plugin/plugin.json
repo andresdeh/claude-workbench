@@ -1,0 +1,26 @@
+{
+  "name": "git-identity",
+  "version": "1.0.0",
+  "description": "Optional guard for the emails you do not want in your commits: warns at session start, blocks git commit/push that would sign with a blocked email, and fixes the repo with the configure skill.",
+  "author": {
+    "name": "andresdeh"
+  },
+  "homepage": "https://github.com/andresdeh/claude-workbench",
+  "repository": "https://github.com/andresdeh/claude-workbench",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git",
+    "identity",
+    "privacy",
+    "noreply"
+  ],
+  "userConfig": {
+    "mode": {
+      "type": "string",
+      "title": "Reaction to a blocked email",
+      "description": "block: stop git commit/push signed with a blocked email. warn: only tell Claude, do not stop the command.",
+      "options": ["block", "warn"],
+      "default": "block"
+    }
+  }
+}

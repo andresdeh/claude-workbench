@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "shell": "bash", "timeout": 5,
+        "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/git-identity.sh\" start" } ] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Bash|PowerShell",
+        "hooks": [ { "type": "command", "shell": "bash", "timeout": 10,
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/git-identity.sh\" before" } ] }
+    ]
+  }
+}
