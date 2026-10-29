@@ -1,0 +1,17 @@
+{
+  "name": "catalog",
+  "version": "1.0.1",
+  "description": "Proposes the claude-workbench plugins that fit the project (and new versions), installs only on your yes, connects the project, and shows every plugin's options in one table.",
+  "author": {
+    "name": "andresdeh"
+  },
+  "homepage": "https://github.com/andresdeh/claude-workbench",
+  "repository": "https://github.com/andresdeh/claude-workbench",
+  "license": "Apache-2.0",
+  "keywords": [
+    "catalog",
+    "marketplace",
+    "propose",
+    "configure"
+  ]
+}
