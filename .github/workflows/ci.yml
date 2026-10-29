@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: model-protocol
+        run: python -I tools/tests/model-protocol.py plugins/model-protocol/hooks/model-protocol.sh
+      - name: git-identity
+        run: python -I tools/tests/git-identity.py plugins/git-identity/hooks/git-identity.sh
+      - name: continuum
+        run: python -I tools/tests/continuum.py plugins/continuum
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: marketplace
+        run: claude plugin validate . --strict
+      - name: plugins
+        run: |
+          for p in plugins/*/; do
+            echo "== $p"
+            claude plugin validate "$p" --strict
+          done
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

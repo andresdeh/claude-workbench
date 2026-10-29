@@ -37,7 +37,7 @@ runs read-only `git` commands (`config`, `rev-parse`, `log`) and makes no networ
 
 ## Requirements
 
-bash and git. Tested on Windows (Git for Windows) and Linux (see the CI matrix in the repo); macOS not tested.
+bash and git. Tested on Windows (Git for Windows); Linux not yet verified (the CI matrix will check it); macOS not tested.
 
 ## Install
 
