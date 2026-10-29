@@ -1,0 +1,26 @@
+{
+  "name": "model-protocol",
+  "version": "2.2.0",
+  "description": "Reminds Claude, on every message, to split work between Opus, Sonnet and Haiku: a UserPromptSubmit hook plus a skill that writes the full rule into the project's CLAUDE.md.",
+  "author": {
+    "name": "andresdeh"
+  },
+  "homepage": "https://github.com/andresdeh/claude-workbench",
+  "repository": "https://github.com/andresdeh/claude-workbench",
+  "license": "Apache-2.0",
+  "keywords": [
+    "model",
+    "opus",
+    "sonnet",
+    "hook",
+    "cost"
+  ],
+  "userConfig": {
+    "enabled": {
+      "type": "boolean",
+      "title": "Enable the model reminder",
+      "description": "Inject the Opus/Sonnet/Haiku reminder on every message. A project can override this in .claude/claude-workbench.conf.",
+      "default": true
+    }
+  }
+}
