@@ -1,0 +1,7 @@
+# Nothing local or test-only enters the repo.
+*.log
+.claude/settings.local.json
+prueba-*/
+test-*/
+__pycache__/
+*.pyc

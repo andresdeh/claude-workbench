@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Barrera: nada de datos propios en el mensaje del commit.
+set -u
+. "$(dirname "$0")/comun.sh"
+h=$(con_dato "$(grep -v '^#' "$1")"); [ -n "$h" ] && falla "el mensaje contiene: $h"
+grep -qi 'Claude-Session' "$1" && falla "el mensaje lleva Claude-Session"
+terminar commit-msg
