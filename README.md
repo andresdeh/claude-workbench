@@ -11,13 +11,47 @@ Each plugin is independent. Install one, some or all.
 
 ## Install
 
+**Step 1: add the marketplace** (once per machine). Inside Claude Code:
+
 ```
 /plugin marketplace add andresdeh/claude-workbench
-/plugin install <plugin>@claude-workbench
 ```
 
-Or install only `catalog` and ask in any project: *"which claude-workbench tools fit here?"*. It compares the marketplace with
-what you have, explains each plugin and installs only what you say yes to.
+**Step 2: install what you want.** Each plugin is independent and Claude Code has no "install everything" command, so you pick
+by name. Run the lines one at a time inside Claude Code.
+
+Everything:
+
+```
+/plugin install catalog@claude-workbench
+/plugin install model-protocol@claude-workbench
+/plugin install git-identity@claude-workbench
+/plugin install continuum@claude-workbench
+```
+
+Only some: keep just the lines you want from that block. Not sure which? Install only `catalog`, then ask in any project:
+*"which claude-workbench tools fit here?"*. It compares the marketplace with what you have, explains each plugin and installs
+only what you say yes to.
+
+Prefer the terminal? The same thing, all at once and without opening Claude Code:
+
+```bash
+claude plugin marketplace add andresdeh/claude-workbench
+claude plugin install catalog@claude-workbench
+claude plugin install model-protocol@claude-workbench
+claude plugin install git-identity@claude-workbench
+claude plugin install continuum@claude-workbench
+```
+
+Some plugins need one extra step inside a project (`model-protocol` and `continuum` have an `install` / `init-project` skill);
+each plugin's README says which.
+
+## Use it with Obsidian
+
+[`continuum`](plugins/continuum/) keeps a project's memory (tasks, decisions, daily log) as plain Markdown notes in a folder
+next to it, `../<project>-memory`. That folder is a normal Obsidian vault: open it with *Obsidian → Open folder as vault* and
+you see the project's state as notes, links and graph, including what Claude wrote. Your edits there are committed with the
+rest. Obsidian is optional and only a viewer; without it the notes are still readable files.
 
 ## Plugins
 
