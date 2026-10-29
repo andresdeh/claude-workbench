@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Barrera: nada de datos propios en lo agregado, ni en el autor o el committer.
+# Barrier: no private data in what is added, nor in the author or the committer.
 set -u
 . "$(dirname "$0")/comun.sh"
 for q in "$(git var GIT_AUTHOR_IDENT)" "$(git var GIT_COMMITTER_IDENT)"; do
-  h=$(con_dato "$q"); [ -n "$h" ] && falla "identidad con un dato prohibido: $h"
+  h=$(with_data "$q"); [ -n "$h" ] && fail "identity with forbidden data: $h"
 done
-agregado=$(git diff --cached -U0 --no-color --no-ext-diff | grep -E '^(\+|diff --git)' | grep -v '^+++ ')
-h=$(con_dato "$agregado"); [ -n "$h" ] && falla "lo agregado contiene: $h"
-terminar pre-commit
+added=$(git diff --cached -U0 --no-color --no-ext-diff | grep -E '^(\+|diff --git)' | grep -v '^+++ ')
+h=$(with_data "$added"); [ -n "$h" ] && fail "what is added contains: $h"
+finish pre-commit

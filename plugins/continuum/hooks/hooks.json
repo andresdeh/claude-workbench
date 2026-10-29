@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/log_turn.py\"",
+            "shell": "bash",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/log_turn.py\"",
+            "shell": "bash",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

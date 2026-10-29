@@ -1,0 +1,32 @@
+{
+  "name": "continuum",
+  "version": "0.5.1",
+  "description": "Continuous work without sessions: memory lives in an Obsidian vault (tasks, decisions, log) read and written through an MCP; a hook without AI records the work. In development.",
+  "author": {
+    "name": "andresdeh"
+  },
+  "homepage": "https://github.com/andresdeh/claude-workbench",
+  "repository": "https://github.com/andresdeh/claude-workbench",
+  "license": "Apache-2.0",
+  "keywords": [
+    "memory",
+    "obsidian",
+    "mcp",
+    "context",
+    "tasks"
+  ],
+  "userConfig": {
+    "autocommit": {
+      "type": "boolean",
+      "title": "Commit the vault after each turn",
+      "description": "After each turn with work, commit the vault's repo (never pushes). Off: only the log line is written. A project can override this in .claude/claude-workbench.conf.",
+      "default": true
+    },
+    "python": {
+      "type": "string",
+      "title": "Python to use",
+      "description": "Path or command of a Python 3.8+ (leave empty to try python3, python and py -3 automatically).",
+      "default": ""
+    }
+  }
+}

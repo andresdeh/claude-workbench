@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "memory": {
+      "type": "stdio",
+      "command": "git",
+      "args": [
+        "-c",
+        "alias.continuum=!sh",
+        "continuum",
+        "${CLAUDE_PLUGIN_ROOT}/launcher.sh",
+        "${CLAUDE_PLUGIN_ROOT}/mcp/server.py"
+      ],
+      "env": {
+        "CONTINUUM_PYTHON": "${user_config.python}"
+      }
+    }
+  }
+}

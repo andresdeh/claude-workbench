@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
-# Barrera: hacia CUALQUIER remoto, revisa todos los commits que salen (identidad, mensaje, diff) y el árbol final.
-# Repite lo de pre-commit a propósito: un commit hecho sin la barrera activa (--no-verify, otra PC) no sale igual.
+# Barrier: towards ANY remote, checks every commit that goes out (identity, message, diff) and the final tree.
+# It repeats pre-commit on purpose: a commit made without the barrier active (--no-verify, another machine) does not go out either.
 set -u
 . "$(dirname "$0")/comun.sh"
-remoto="$1"
-CERO=0000000000000000000000000000000000000000
+remote="$1"
+ZERO=0000000000000000000000000000000000000000
 while read -r lref lsha rref rsha; do
   [ -z "${lref:-}" ] && continue
-  [ "$lsha" = "$CERO" ] && continue                      # borrar una rama remota: no publica nada
-  for c in $(git rev-list "$lsha" --not --remotes="$remoto"); do
-    corto=${c:0:9}
-    h=$(con_dato "$(git log -1 --format='%an <%ae> | %cn <%ce>' "$c")"); [ -n "$h" ] && falla "$corto: identidad: $h"
-    msj=$(git log -1 --format='%B' "$c")
-    h=$(con_dato "$msj"); [ -n "$h" ] && falla "$corto: mensaje: $h"
-    printf '%s' "$msj" | grep -qi 'Claude-Session' && falla "$corto: el mensaje lleva Claude-Session"
-    h=$(con_dato "$(git show --format= -U0 --no-color --no-ext-diff "$c" | grep -E '^(\+|diff --git)')")
-    [ -n "$h" ] && falla "$corto: el diff agrega: $h"
+  [ "$lsha" = "$ZERO" ] && continue                      # deleting a remote branch: publishes nothing
+  for c in $(git rev-list "$lsha" --not --remotes="$remote"); do
+    short=${c:0:9}
+    h=$(with_data "$(git log -1 --format='%an <%ae> | %cn <%ce>' "$c")"); [ -n "$h" ] && fail "$short: identity: $h"
+    msg=$(git log -1 --format='%B' "$c")
+    h=$(with_data "$msg"); [ -n "$h" ] && fail "$short: message: $h"
+    printf '%s' "$msg" | grep -qi 'Claude-Session' && fail "$short: the message carries Claude-Session"
+    h=$(with_data "$(git show --format= -U0 --no-color --no-ext-diff "$c" | grep -E '^(\+|diff --git)')")
+    [ -n "$h" ] && fail "$short: the diff adds: $h"
   done
-  arbol=$(git grep -I -i -l -E "$PATRON" "$lsha" -- 2>/dev/null | head -5 | tr '\n' ' ')
-  [ -n "$arbol" ] && falla "$lref: el árbol final tiene datos prohibidos en: $arbol"
+  tree=$(git grep -I -i -l -E "$PATTERN" "$lsha" -- 2>/dev/null | head -5 | tr '\n' ' ')
+  [ -n "$tree" ] && fail "$lref: the final tree has forbidden data in: $tree"
 done
-terminar "pre-push a $remoto"
+finish "pre-push to $remote"

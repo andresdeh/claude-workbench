@@ -1,0 +1,40 @@
+{
+  "name": "claude-workbench",
+  "owner": {
+    "name": "andresdeh"
+  },
+  "description": "A personal, public collection of Claude Code plugins: model-split reminder, optional git-identity guard, continuous work without sessions, and a catalog that proposes them.",
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "catalog",
+      "source": "catalog",
+      "description": "Compares the marketplace with what is installed and proposes what to install or update; connects the project and lists every plugin's options in one table.",
+      "tags": ["catalog", "marketplace", "configure"],
+      "category": "workflow"
+    },
+    {
+      "name": "model-protocol",
+      "source": "model-protocol",
+      "description": "Reminds Claude on every message to split work between Opus, Sonnet and Haiku (hook) and writes the full rule into CLAUDE.md.",
+      "tags": ["model", "hook", "cost"],
+      "category": "workflow"
+    },
+    {
+      "name": "continuum",
+      "source": "continuum",
+      "description": "Continuous work without sessions: memory in an Obsidian vault (own MCP), log and commit by a hook without AI, reader and tester subagents.",
+      "tags": ["memory", "obsidian", "mcp", "context"],
+      "category": "workflow"
+    },
+    {
+      "name": "git-identity",
+      "source": "git-identity",
+      "description": "Optional guard for the emails you do not want in your commits: warns, blocks git commit/push and fixes the repo.",
+      "tags": ["git", "privacy", "identity"],
+      "category": "general-rule"
+    }
+  ]
+}

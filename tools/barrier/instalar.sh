@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Activa la barrera en esta copia del repo. Correr una vez por clon, desde la raíz.
+# Activates the barrier in this copy of the repo. Run once per clone, from the root.
 set -eu
 git config core.hooksPath tools/barrier
-lista="$(git rev-parse --git-path info/palabras-prohibidas.txt)"
-if [ ! -s "$lista" ]; then
-  mkdir -p "$(dirname "$lista")"
-  printf '%s\n' '# Una expresión regular extendida por línea; no distingue mayúsculas. NO se versiona.' \
-    '# Agregar: dominio y servidores de la empresa, cuentas, rangos de red, nombres internos.' > "$lista"
-  echo "Creada $lista vacía: completarla. Mientras no tenga expresiones, la barrera rechaza todo."
+list="$(git rev-parse --git-path info/forbidden-terms.txt)"
+if [ ! -s "$list" ]; then
+  mkdir -p "$(dirname "$list")"
+  printf '%s\n' '# One extended regular expression per line; case-insensitive. NOT versioned.' \
+    '# Add: your company or private domain, servers, accounts, network ranges, internal names.' > "$list"
+  echo "Created empty $list: fill it in. While it has no expressions, the barrier rejects everything."
 fi
-echo "Barrera activa (core.hooksPath=$(git config core.hooksPath))."
+echo "Barrier active (core.hooksPath=$(git config core.hooksPath))."
