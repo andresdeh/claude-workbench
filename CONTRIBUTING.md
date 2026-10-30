@@ -24,7 +24,7 @@ Before you open one:
    Scripts are executable in git (`git update-index --chmod=+x`). Files use LF.
 5. Anything a plugin writes into a user's file goes between `claude-workbench:<plugin>` markers, after a diff the user approves.
 6. **No private data**: no company, server, domain, account or personal path, and no personal e-mail in commits. Enable the
-   barrier with `tools/barrier/instalar.sh` and fill in your own list in `.git/info/forbidden-terms.txt`. The branch of a pull
+   barrier with `tools/barrier/install.sh` and fill in your own list in `.git/info/forbidden-terms.txt`. The branch of a pull
    request is public even if it is never merged, so clean **before** you push.
 7. Text for users is in English; what a plugin shows or writes while in use follows the user's language (see
    [`docs/philosophy.md`](docs/philosophy.md), principle 7).

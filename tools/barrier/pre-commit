@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Barrier: no private data in what is added, nor in the author or the committer.
 set -u
-. "$(dirname "$0")/comun.sh"
+. "$(dirname "$0")/common.sh"
 for q in "$(git var GIT_AUTHOR_IDENT)" "$(git var GIT_COMMITTER_IDENT)"; do
   h=$(with_data "$q"); [ -n "$h" ] && fail "identity with forbidden data: $h"
 done

@@ -121,7 +121,7 @@ Anything that reaches this repository is public. `tools/barrier/`:
   outgoing commit (author, message, diff) and the final tree.
 - The list of forbidden expressions lives in `.git/info/forbidden-terms.txt`, **outside version control** (the list is itself
   private data). Without a list the barrier rejects everything.
-- Enabled per clone with `tools/barrier/instalar.sh` (`core.hooksPath=tools/barrier`). CI runs gitleaks on top.
+- Enabled per clone with `tools/barrier/install.sh` (`core.hooksPath=tools/barrier`). CI runs gitleaks on top.
 
 ## 9. Lessons from testing
 

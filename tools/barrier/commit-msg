@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Barrier: no private data in the commit message, and no link to a private session.
 set -u
-. "$(dirname "$0")/comun.sh"
+. "$(dirname "$0")/common.sh"
 h=$(with_data "$(grep -v '^#' "$1")"); [ -n "$h" ] && fail "the message contains: $h"
 grep -qi 'Claude-Session' "$1" && fail "the message carries Claude-Session"
 finish commit-msg

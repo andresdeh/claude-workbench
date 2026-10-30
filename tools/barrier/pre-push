@@ -2,7 +2,7 @@
 # Barrier: towards ANY remote, checks every commit that goes out (identity, message, diff) and the final tree.
 # It repeats pre-commit on purpose: a commit made without the barrier active (--no-verify, another machine) does not go out either.
 set -u
-. "$(dirname "$0")/comun.sh"
+. "$(dirname "$0")/common.sh"
 remote="$1"
 ZERO=0000000000000000000000000000000000000000
 while read -r lref lsha rref rsha; do
