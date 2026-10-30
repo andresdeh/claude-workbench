@@ -17,8 +17,10 @@ Installing is **one command**, run once per machine in a terminal (on Windows, G
 claude plugin marketplace add andresdeh/claude-workbench && claude plugin list --available --json | grep -o '"[a-z0-9-]*@claude-workbench"' | sort -u | tr -d '"' | while read -r p; do claude plugin install "$p"; done
 ```
 
-That's all. It adds the marketplace and installs every plugin it lists, so the same line also covers plugins added later.
+That adds the marketplace and installs every plugin it lists, so the same line also covers plugins added later.
 Each one is still installed on its own: you can disable or uninstall any of them without touching the rest.
+Installing is the first half: [`continuum`](#then-in-each-project-only-for-some-plugins) does nothing in a project until you
+connect it there.
 
 ### Optional: install only some plugins
 
@@ -37,8 +39,18 @@ Once the marketplace is added, any single plugin installs by name: `/plugin inst
 
 ### Then, in each project (only for some plugins)
 
-Installing is done. A few plugins also have a one-time **setup inside a project**, a skill you ask for there (`model-protocol`
-has `install`, `continuum` has `init-project`); each plugin's README says which.
+A plugin being installed and enabled does not mean it is active in a project. Some need a one-time **setup inside each
+project**, a skill you ask for there. Until you run it, the plugin is installed and does nothing: that is expected, not an
+error.
+
+| Plugin | Skill to run in the project | What it does |
+|---|---|---|
+| `model-protocol` | `/model-protocol:install` | writes its rule into the project's `CLAUDE.md`, between markers, after a diff you approve (its per-message reminder works without it) |
+| `continuum` | `/continuum:init-project` | creates the memory vault `../<project>-memory` (its own git repo), writes a block in `CLAUDE.md` and `.gitignore` and adds permissions, after a diff you approve; without the vault its MCP and hook do nothing |
+| `git-identity` | `/git-identity:configure` | optional: lists the e-mails to keep out of your commits, once per machine |
+
+`continuum` is in development: connect it first in a project where that is fine, and read [its README](plugins/continuum/)
+before, including how to undo it. `catalog` needs nothing in the project.
 
 ## Use it with Obsidian
 

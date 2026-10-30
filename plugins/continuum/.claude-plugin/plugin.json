@@ -1,6 +1,6 @@
 {
   "name": "continuum",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Continuous work without sessions: memory lives in an Obsidian vault (tasks, decisions, log) read and written through an MCP; a hook without AI records the work. In development.",
   "author": {
     "name": "andresdeh"

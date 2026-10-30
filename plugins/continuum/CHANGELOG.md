@@ -1,5 +1,8 @@
 # Changelog — continuum
 
+## 0.5.2 (2026-10-30)
+- Docs only: a notice at the top of the README and a clearer Install section say that installing does not activate the plugin and that `/continuum:init-project` is required in each project (an enabled plugin with no vault is expected, not an error). No code change.
+
 ## 0.5.1 — first release as `continuum` (2026-10-29)
 - Renamed from `continuo` (private predecessor, 0.5.1 there). Version kept; still in development.
 - **English names, fixed**: folders `tasks/ decisions/ log/ agents/`, `index.md`, states `open / in progress / done`, frontmatter

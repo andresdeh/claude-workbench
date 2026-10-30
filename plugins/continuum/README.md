@@ -1,5 +1,10 @@
 # continuum (v0.5.1 — IN DEVELOPMENT)
 
+> **Installing the plugin does not activate it.** Until you run `/continuum:init-project` in a project, `continuum` does nothing
+> there: `claude plugin list` shows it enabled and no vault exists. That is expected, not an error. The skill creates the vault
+> `../<project>-memory`, a block in `CLAUDE.md` and `.gitignore`, and permissions, always after a diff you approve; undoing it is
+> in [Uninstall](#uninstall). The plugin is in development: try it first in a project where that is fine.
+
 | Fact sheet | |
 |---|---|
 | Solves | Stop spending context and tokens on session wrap-ups and on re-reading long documentation at the start |
@@ -62,7 +67,9 @@ Python 3.8+ and git. Tested on Windows; Linux not yet verified.
 /plugin install continuum@claude-workbench
 ```
 
-Then, in a project: "start this project with continuum" → runs `init-project`.
+Then, in each project where you want it (**required**, installing is not enough): `/continuum:init-project`, or ask "start this
+project with continuum". Check it worked: the folder `../<project>-memory` exists and `CLAUDE.md` has a
+`claude-workbench:continuum` block.
 
 ## Config
 

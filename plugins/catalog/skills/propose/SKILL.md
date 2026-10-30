@@ -43,7 +43,7 @@ Classify each plugin of the catalog (except `catalog`):
 | Not installed and unrelated to the project | Mention it in one line, without recommending it |
 | Installed with a lower version than the `plugin.json` one | Update (`autoUpdate` is off on purpose): summarize what is new from the `CHANGELOG.md` between both versions (`sed -n '1,40p' "$M/plugins/<p>/CHANGELOG.md"`); if it is a MAJOR version, warn that how it installs or what it writes changes |
 | Installed but `enabled: false` | Ask whether to re-enable; do not insist |
-| Installed and up to date, but its block is missing in `CLAUDE.md` (it has an install skill) | Propose running that skill |
+| Installed and up to date, but its block is missing in `CLAUDE.md` (it has an install skill), or it is `continuum` and the project has no vault (`../<project>-memory`) | Say plainly that it is installed but **not connected, so inert here: expected, not an error**, and propose running that skill (`continuum` is optional and in development: say so and let the user decide) |
 
 Show a short table (plugin · what it solves · runs code · context cost · scope) and ask with `AskUserQuestion`
 (`multiSelect: true`), recommended first and marked "(Recommended)". The description of each option carries what weighs most for

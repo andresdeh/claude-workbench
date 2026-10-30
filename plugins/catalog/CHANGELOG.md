@@ -1,5 +1,8 @@
 # Changelog — catalog
 
+## 1.0.3 (2026-10-30)
+- `propose` says plainly when `continuum` is installed but the project has no vault: inert, expected, not an error; it proposes `init-project` and leaves it to the user (it is in development).
+
 ## 1.0.2 (2026-10-30)
 - `propose` never recommends a plugin whose README title says `IN DEVELOPMENT` (today `continuum`): it mentions it in one line
   and installs it only if the user picks it. The fact-sheet command now also prints each README's title line.
