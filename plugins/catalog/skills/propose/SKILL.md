@@ -22,11 +22,12 @@ Git for Windows).
 
    ```bash
    M='<installLocation>'; cat "$M/.claude-plugin/marketplace.json"
-   for d in "$M"/plugins/*/; do echo "== $(basename "$d")"; grep -h '"version"' "$d/.claude-plugin/plugin.json"
+   for d in "$M"/plugins/*/; do echo "== $(basename "$d")"; grep -h '"version"' "$d/.claude-plugin/plugin.json"; head -1 "$d/README.md"
      awk '/^\| Fact sheet/{f=1} f&&/^$/{exit} f' "$d/README.md"; done
    ```
 
-   The fact sheet is the table that starts with `| Fact sheet |` at the top of each plugin's `README.md`. Read nothing else of the plugin.
+   The fact sheet is the table that starts with `| Fact sheet |` at the top of each plugin's `README.md`; the line before it is the
+   title, which carries the status (for example `IN DEVELOPMENT`). Read nothing else of the plugin.
 5. Look at the current project without writing: `CLAUDE.md` (does it already have blocks `<!-- claude-workbench:<plugin> … -->`?),
    `docs/`, `.claude/settings.json` (does it already declare `claude-workbench`?) and whether it is a git repo.
 
@@ -36,6 +37,7 @@ Classify each plugin of the catalog (except `catalog`):
 
 | Case | What to propose |
 |---|---|
+| Not installed and its README title says `IN DEVELOPMENT` | Never recommend it, whatever its `category`: mention it in one line as "in development" and install it only if the user picks it |
 | Not installed and `category` = `general-rule` | Offer it as recommended: these are rules the user may want in every project |
 | Not installed and it solves something this project shows (by its `description`, `tags` and what was seen in step 1.5) | Install, saying **why** in one line |
 | Not installed and unrelated to the project | Mention it in one line, without recommending it |

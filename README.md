@@ -51,7 +51,7 @@ rest. Obsidian is optional and only a viewer; without it the notes are still rea
 
 | Plugin | What it does | Runs on your machine | Status |
 |---|---|---|---|
-| [`catalog`](plugins/catalog/) | Proposes the plugins that fit the project and their new versions; one table with every plugin's options | nothing on its own (skills only) | 1.0.1 |
+| [`catalog`](plugins/catalog/) | Proposes the plugins that fit the project and their new versions; one table with every plugin's options | nothing on its own (skills only) | 1.0.2 |
 | [`model-protocol`](plugins/model-protocol/) | Reminds Claude on every message which work belongs to Opus, Sonnet or Haiku, and when to ask you to switch | a read-only bash script per message (~200 tokens) | 2.2.0 |
 | [`git-identity`](plugins/git-identity/) | Blocks (or warns about) `git commit`/`git push` signed with an e-mail you listed; fixes the repo with your yes | a bash script at session start and before `git` commands | 1.0.0 |
 | [`continuum`](plugins/continuum/) | Work by tasks instead of sessions: memory in an Obsidian vault next to the project, read and written through its own MCP; a hook logs each turn without AI | a Python MCP server and a Python hook, both confined to the vault | 0.5.1, in development |

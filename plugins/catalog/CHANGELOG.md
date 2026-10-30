@@ -1,5 +1,9 @@
 # Changelog — catalog
 
+## 1.0.2 (2026-10-30)
+- `propose` never recommends a plugin whose README title says `IN DEVELOPMENT` (today `continuum`): it mentions it in one line
+  and installs it only if the user picks it. The fact-sheet command now also prints each README's title line.
+
 ## 1.0.1 — first release as `catalog` (2026-10-29)
 - Renamed from `catalogo` (private predecessor). Version kept at 1.0.1; all text in English, replies in the user's language.
 - Targets the `claude-workbench` marketplace (`andresdeh/claude-workbench`); markers are `claude-workbench:<plugin>`; the

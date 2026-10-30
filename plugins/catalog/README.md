@@ -1,4 +1,4 @@
-# catalog (v1.0.1)
+# catalog (v1.0.2)
 
 | Fact sheet | |
 |---|---|
