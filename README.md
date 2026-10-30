@@ -11,40 +11,30 @@ Each plugin is independent. Install one, some or all.
 
 ## Install
 
-**Step 1: add the marketplace** (once per machine). Inside Claude Code:
-
-```
-/plugin marketplace add andresdeh/claude-workbench
-```
-
-**Step 2: install what you want.** Each plugin is independent and Claude Code has no "install everything" command, so you pick
-by name. Run the lines one at a time inside Claude Code.
-
-Everything:
-
-```
-/plugin install catalog@claude-workbench
-/plugin install model-protocol@claude-workbench
-/plugin install git-identity@claude-workbench
-/plugin install continuum@claude-workbench
-```
-
-Only some: keep just the lines you want from that block. Not sure which? Install only `catalog`, then ask in any project:
-*"which claude-workbench tools fit here?"*. It compares the marketplace with what you have, explains each plugin and installs
-only what you say yes to.
-
-Prefer the terminal? The same thing, all at once and without opening Claude Code:
+Installing is **one command**, run once per machine in a terminal (on Windows, Git Bash), not inside Claude Code:
 
 ```bash
-claude plugin marketplace add andresdeh/claude-workbench
-claude plugin install catalog@claude-workbench
-claude plugin install model-protocol@claude-workbench
-claude plugin install git-identity@claude-workbench
-claude plugin install continuum@claude-workbench
+claude plugin marketplace add andresdeh/claude-workbench && claude plugin list --available --json | grep -o '"[a-z0-9-]*@claude-workbench"' | sort -u | tr -d '"' | while read -r p; do claude plugin install "$p"; done
 ```
 
-Some plugins need one extra step inside a project (`model-protocol` and `continuum` have an `install` / `init-project` skill);
-each plugin's README says which.
+That's all. It adds the marketplace and installs every plugin it lists, so the same line also covers plugins added later.
+Each one is still installed on its own: you can disable or uninstall any of them without touching the rest.
+
+### Optional: install only some plugins
+
+Skip this if you ran the command above. If you'd rather not install everything, run this **instead**, inside Claude Code
+(v2.1.275 or later):
+
+```
+/plugin install catalog --marketplace andresdeh/claude-workbench
+```
+
+Then ask in any project: *"which claude-workbench tools fit here?"*. `catalog` compares the marketplace with what you have,
+explains each plugin and installs only what you say yes to.
+
+Once the marketplace is added, any single plugin installs by name: `/plugin install <plugin>@claude-workbench` (see
+[Plugins](#plugins)). Some plugins need one extra step inside a project (`model-protocol` and `continuum` have an
+`install` / `init-project` skill); each plugin's README says which.
 
 ## Use it with Obsidian
 
