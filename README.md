@@ -33,8 +33,12 @@ Then ask in any project: *"which claude-workbench tools fit here?"*. `catalog` c
 explains each plugin and installs only what you say yes to.
 
 Once the marketplace is added, any single plugin installs by name: `/plugin install <plugin>@claude-workbench` (see
-[Plugins](#plugins)). Some plugins need one extra step inside a project (`model-protocol` and `continuum` have an
-`install` / `init-project` skill); each plugin's README says which.
+[Plugins](#plugins)).
+
+### Then, in each project (only for some plugins)
+
+Installing is done. A few plugins also have a one-time **setup inside a project**, a skill you ask for there (`model-protocol`
+has `install`, `continuum` has `init-project`); each plugin's README says which.
 
 ## Use it with Obsidian
 
